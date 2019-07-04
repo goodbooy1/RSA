@@ -1,0 +1,60 @@
+#include <iostream> 
+#include <cmath> 
+#include <locale> 
+
+using namespace std; 
+int main() 
+{ 
+setlocale(LC_ALL, "Russian"); 
+int q, p, n, P, f, e, d = 1, k = 0; 
+unsigned long long int E; 
+cout « "Ваше число q: "; 
+cin » q; 
+cout « "Ваше число p: "; 
+cin » p; 
+n = p * q; 
+cout « "Ваше число N= " « n « " Выберите простое чило E "; 
+cin » P; 
+f = (p - 1) * (q - 1); 
+cout « endl; 
+if ((f % 2) != 0) 
+{ 
+e = 2; 
+k = 1; 
+} 
+for (int i = 3; i < f; i++) 
+{ 
+if (k == 1) 
+{ 
+break; 
+} 
+for (int j = 1; j <= i - 1; j++) 
+{ 
+if (((i % j) != 0) && ((f % i) != 0)) 
+{ 
+k = 1; 
+e = i; 
+break; 
+} 
+} 
+} 
+cout « "Открытые ключи {" « e « ", " « n « "}" « endl; 
+int a = 1; 
+while (a == 1) 
+{ 
+d++; 
+if ((d != e) && (((d * e) % f) == 1)) 
+{ 
+a = -1; 
+} 
+} 
+cout « "Закрытый ключ {" « d « ", " « n « "}" « endl; 
+E = pow(P, e); 
+E = E % n; 
+cout « "Результат Шифрования " « E « endl; 
+E = pow(E, d); 
+E = E % n; 
+cout « "Результат Расшифровки " « E « endl; 
+system("pause"); 
+return 0; 
+}
